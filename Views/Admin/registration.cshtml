@@ -1,0 +1,62 @@
+﻿@model ONLINESHOP.Models.User
+@{
+    ViewBag.Title = "registration";
+}
+
+@using (Html.BeginForm("registration1", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+                        <h2>Enter Requested info</h2>
+    
+    <div class="form-group">
+        @Html.Label("Name", new { @class = "col-md-2col-xs-2 col-sm-2 control-label" })
+        <div class="col-md-3 col-xs-3 col-sm-3">
+            @Html.TextBoxFor(user => user.Name, new { @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Email", new { @class = "col-md-2 col-xs-2 col-sm-2 control-label",id="emdiv"})
+        <div class="col-md-3 col-xs-3 col-sm-3">
+            @Html.TextBoxFor(user => user.Email, new { type="email", @class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Password", new { @class = "col-md-2 col-xs-2 col-sm-2 control-label" })
+        <div class="col-md-3 col-xs-3 col-sm-3">
+            @Html.TextBoxFor(user => user.Password, new {type="password", @class = "form-control" })
+        </div>
+    </div>
+                
+                
+                   
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-10">
+            <input type="submit" class="btn btn-default" id="signbtn" value="Signup" />
+        </div>
+    </div>
+}
+@section iii{
+<script>
+    $(document).ready(function () {
+        $('#signbtn').on('change', (function () {
+            var x = $('#signbtn').text();
+            $.getJSON("/Home/validEmail?email=" + x, function (data) {
+                if (data == true) {
+                    $('#emdiv').append("<p id='av'>user name available<P>");
+                }
+                else {
+                    $('#emdiv').append("<p id='av'>user name available<P>");
+                }
+            });
+
+        }));
+        $('#signbtn').on('click', (function () {
+            $('#av').remove();
+        }));
+    });
+
+</script>
+    
+    }

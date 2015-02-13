@@ -1,0 +1,24 @@
+﻿@model ONLINESHOP.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<form action="/Main/Home/Login1" method="post">
+       <!--<form class="form-signin"> -->
+    <div class="col-md-4">
+        <h2 class="form-signin-heading">Please sign in</h2>
+     
+         @Html.TextBoxFor(user =>user.Email, new { @class = "form-control" ,name="nam"})
+        <br />
+        <br />
+        @Html.TextBoxFor(user=>user.Password ,new { type = "password", placeholder = "Password"})
+        <br />
+        <br />
+    <div class="col-md-6">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </div>
+        </div>
+    </form>
+
+
+

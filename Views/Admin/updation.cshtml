@@ -1,0 +1,99 @@
+﻿@model ONLINESHOP.Models.phone
+@{
+    ViewBag.Title = "updation";
+}
+
+<h2>updation</h2>
+
+           @using (Html.BeginForm("AddNewProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+           {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true)
+                    
+                    <div class="form-group">
+                            @Html.Label("File", new { @class = "col-md-2 col-xs-2 col-sm-2 control-label" })
+                            <div class="col-md-10 col-xs-10 col-sm-10">
+                                <input type="file" name="nein" value="" />
+                            </div>
+                        </div>
+               
+                    <div class="form-group">
+                        @Html.LabelFor(phone=>phone.company, new { @class = "col-md-2 col-xs-2 col-sm-2 control-label" })
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            @Html.TextBoxFor(phone=>phone.company, new { @class = "form-control" })
+                        </div>
+                    </div>
+                <div class="form-group">
+                        @Html.LabelFor(phone=>phone.price, new { @class = "col-md-2 col-xs-2 col-sm-2 control-label" })
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            @Html.TextBoxFor(phone => phone.price, new { @class = "form-control" })
+                        </div>
+                    </div>
+                <div class="form-group">
+                        
+                        @Html.LabelFor(phone=> phone.model, new { @class = "col-md-2 col-xs-2 col-sm-2 control-label", id = "d1" })
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            @Html.TextBoxFor(phone => phone.model, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-default" value="Add" />
+                        </div>
+                    </div>
+           }
+            
+            
+        
+            @*<form action="/Admin/AddNewProduct" method="post" class = "form-horizontal", role = "form">
+                    <div class="form-group">
+                            <label class = "col-md-2 col-xs-2 col-sm-2 control-label">file</label>
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            
+                            <input type="file" name="name" value="@Model.fil" />
+
+                            
+                        </div>
+                        </div>
+                    <div class="form-group">
+                            <label class = "col-md-2 col-xs-2 col-sm-2 control-label">Name</label>
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            
+                               <input type="text" name="name" value="@Model.p.name" />
+
+                            
+                        </div>
+                        </div>
+    <div class="form-group">
+                            <label class = "col-md-2 col-xs-2 col-sm-2 control-label">Type</label>
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            
+                            <input type="text" name="name" value="@Model.p.type" />
+
+                            
+                        </div>
+                        </div>
+
+    <div class="form-group">
+                            <label class = "col-md-2 col-xs-2 col-sm-2 control-label">Price</label>
+                        <div class="col-md-10 col-xs-10 col-sm-10">
+                            
+                            <input type="text" name="name" value="@Model.p.price" />
+
+                            
+                        </div>
+                        </div>
+
+</form>
+
+
+<form action="/Admin/updationfile" method="post" enctype="multipart/form-data" >
+
+    Upload Image: <input type="file" name="image" />
+ 
+     
+ 
+    <input type="submit" value="upload" />
+</form>*@

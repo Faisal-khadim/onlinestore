@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Iphone";
+}
+<style>
+    #boo {
+  
+        text-align:left;
+        color:brown;
+
+    }
+</style>
+
+<h2 style="text-align:center">Iphone</h2>
+
+       
+            @foreach(var x in Model){
+  
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb" )>
+
+                <p style="text-align:center;color:firebrick;font-size:medium; ">@x.company</p>
+               <a class="thumbnail" href="#"><img class="img-responsive" src="@Url.Content(x.path)" alt=""/></a>
+                <div class="row">
+                <div class="col-md-6 col-lg-4 col-xs-2" ><p id="boo">@Html.Label("Price: ",new {@class="control-label"})
+                     @x.price</div>
+                     <div class="col-md-6 col-lg-4 col-xs-2" ><p id="Model">@Html.Label("Model ",new {@class="control-label"})
+                     @x.model</div>
+                    <form action="/Catagory/AddtoCart/@x.Id" method="post">
+                        <input type="submit" value="Add To Cart" class="btn btn-default" /> 
+                    </form>
+            
+                </div>
+                   
+
+             </div>
+            }
+

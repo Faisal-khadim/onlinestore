@@ -1,0 +1,20 @@
+﻿@model List<ONLINESHOP.Models.User>
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>About</h2>
+<p>This web app provides a place to purchase and sell cell phones</p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Name</td>
+    </tr>
+    @foreach(var y in @Model)
+    {
+    <tr>
+        
+         <td>y.Name</td>
+    </tr>
+    }
+</table>

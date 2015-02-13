@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="~/Scripts/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+   <!-- @Scripts.Render("~/bundles/modernizr")<a href="~/Models/EntityModel1.edmx">~/Models/EntityModel1.edmx</a> -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/shop-homepage.css" rel="stylesheet" />
+     @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @RenderSection("iii", required: false)
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <script src="~/Scripts/jquery.js"></script>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("About", "About", "Home")
+
+                    </li>
+                    
+                    
+
+                    <li>
+                        @Html.ActionLink("Contact", "Contact", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("registration", "registration", "Admin")
+                    </li>
+                     <li>
+                        @Html.ActionLink("updation", "updation", "Admin")
+
+                    </li>
+                    
+                </ul>
+                <div class="pull-right">
+                       @{
+                           var x=Session["name"] as string;
+                           
+                           if(x!=null)
+                           {
+                                <a href="/Home/logout" id="logout" class="btn btn-success pull-right">logout</a>
+                           <script>
+                               $('#login').remove();
+                           </script>
+                           
+                           }
+                               
+                           else
+                            {
+                               <script>
+                                   $('#logout').remove();
+
+                               </script>
+                                      <a href="/Home/Login" id="login" class ="btn btn-primary pull-right">login</a>
+                           
+                            }
+                            }
+                    </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Mobile Zone</p>
+                <div class="list-group">
+                    @Html.ActionLink("OppO","OppO","Catagory",new {exampe=5},new {@class ="list-group-item"})
+                    @Html.ActionLink("htc","htc","Catagory",new {exampe=5},new {@class ="list-group-item"})
+                    @Html.ActionLink("iphone","iphone","Catagory",new {exampe=5},new {@class ="list-group-item"})
+                    @Html.ActionLink("blackberry","blackberry","Catagory",new {exampe=5},new {@class ="list-group-item"})
+                    @Html.ActionLink("Samsung","Samsung","Catagory",new {exampe=5},new {@class ="list-group-item"})
+                    @Html.ActionLink("Motorolla","Motorolla","Catagory",new {exampe=5},new {@class ="list-group-item"})
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+              
+            @RenderBody();
+                  </div>
+        </div>
+           </div>
+    <!-- /.container -->
+
+    <div class="container">
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+   
+</body>
+</html>

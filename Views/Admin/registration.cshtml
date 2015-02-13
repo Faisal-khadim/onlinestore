@@ -3,10 +3,10 @@
     ViewBag.Title = "registration";
 }
 
+ 
 @using (Html.BeginForm("registration1", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(false)
 
                         <h2>Enter Requested info</h2>
     
@@ -18,8 +18,12 @@
     </div>
     <div class="form-group">
         @Html.Label("Email", new { @class = "col-md-2 col-xs-2 col-sm-2 control-label",id="emdiv"})
+        <input type="button" id="chkBtn" value="Check Availability"/>
         <div class="col-md-3 col-xs-3 col-sm-3">
-            @Html.TextBoxFor(user => user.Email, new { type="email", @class = "form-control"})
+            @Html.TextBoxFor(user => user.Email, new {id="emailBox" ,type="email", @class = "form-control"})
+            <p id="uA" style="color:green" hidden>Username Available</p>
+        <p id="uNa" style="color:red" hidden>Username not available</p>
+        
         </div>
     </div>
     <div class="form-group">
@@ -37,24 +41,29 @@
         </div>
     </div>
 }
+    @Scripts.Render("~/bundles/jquery")
 @section iii{
 <script>
     $(document).ready(function () {
-        $('#signbtn').on('change', (function () {
-            var x = $('#signbtn').text();
+        $('#chkBtn').click(function(){
+        
+            var x = $('#emailBox').val();
+
             $.getJSON("/Home/validEmail?email=" + x, function (data) {
                 if (data == true) {
-                    $('#emdiv').append("<p id='av'>user name available<P>");
+                    $("#uA").show();
+
                 }
                 else {
-                    $('#emdiv').append("<p id='av'>user name available<P>");
+                    $("#uNa").show();
+
                 }
             });
 
-        }));
-        $('#signbtn').on('click', (function () {
-            $('#av').remove();
-        }));
+        
+        });
+        
+ 
     });
 
 </script>

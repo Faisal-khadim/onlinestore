@@ -25,7 +25,7 @@
                      @x.price</div>
                      <div class="col-md-6 col-lg-4 col-xs-2" ><p id="Model">@Html.Label("Model ",new {@class="control-label"})
                      @x.model</div>
-                    <form action="/Catagory/AddtoCart/@x.Id" method="post">
+                    <form action="/Catagory/AddtoCart?pid=@x.Id&uid=@Session["Id"]" method="post">
                         <input type="submit" value="Add To Cart" class="btn btn-default" /> 
                     </form>
             
